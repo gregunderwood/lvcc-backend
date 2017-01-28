@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  database: myapp_development
+  pool: 5
+  username: postgres
+  password:
+  host: db
+
+development:
+  <<: *default
+  database: lvcc_development
+
+
+test:
+  <<: *default
+  database: lvcc_test
+
+production:
+  <<: *default
+  database: lvcc_production
+  username: app
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
